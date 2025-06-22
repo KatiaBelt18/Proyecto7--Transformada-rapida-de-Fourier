@@ -35,7 +35,7 @@ magnitude = np.abs(fft_data)
 cutoff = 1000  # Hz
 fft_filtered = [val if abs(freq[i]) <= cutoff else 0 for i, val in enumerate(fft_data)]
 
-# Magnitud filtrada
+# Magnitud
 magnitude_filtered = np.abs(fft_filtered)
 
 # Graficar espectros antes y después del filtro
@@ -61,9 +61,9 @@ plt.show()
 # IFFT normalizada para reconstruir señal
 filtered_signal_complex = ifft_normalized(fft_filtered)
 
-# Tomar solo la parte real y convertir a int16 para WAV
+#convertir a int16 para WAV
 filtered_signal = np.array([int(np.real(x)) for x in filtered_signal_complex], dtype=np.int16)
 
 # Guardar archivo de salida
-wavfile.write("salida_filtrada.wav", sample_rate, filtered_signal)
-print("Archivo guardado como salida_filtrada.wav")
+wavfile.write("audio_salida.wav", sample_rate, filtered_signal)
+print("Archivo guardado como audio_salida.wav")
